@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kedk_portfolio/splash_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final isDevicePortrait = isPortait(context);
     return MaterialApp(
       title: "Khin Eaindra Kyaw's Portfolio",
       theme: ThemeData(
