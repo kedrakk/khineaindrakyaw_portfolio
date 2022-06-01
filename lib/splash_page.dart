@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/home_page.dart';
+import 'package:kedk_portfolio/pages/home_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -13,9 +13,7 @@ class SplashPage extends StatelessWidget {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const MyHomePage(
-            title: "Khin Eaindra Kyaw's Portfolio",
-          ),
+          builder: (context) => const HomePage(),
         ),
       ),
     );
