@@ -1,17 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/test_navbar.dart';
+import 'package:kedk_portfolio/const/nav_items.dart';
+import 'package:kedk_portfolio/widgets/navbar.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: FixedNavBarWidget(),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: FixedNavBarWidget(
+          onMenuPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+        ),
       ),
-      body: HomeWidget(),
+      drawer: Drawer(
+        child: ListView(
+          children: navItems
+              .map<Widget>(
+                (e) => ListTile(
+                  title: Text(
+                    e['title'] ?? '',
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+      body: const HomeWidget(),
     );
   }
 }

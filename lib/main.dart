@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/splash_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/service/locator.dart';
+import 'package:kedk_portfolio/pages/splash_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   runApp(
-    const MyApp(),
+    const ProviderScope(
+      child: MyApp(),
+    ),
   );
 }
 
@@ -12,7 +18,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final isDevicePortrait = isPortait(context);
     return MaterialApp(
       title: "Khin Eaindra Kyaw's Portfolio",
       theme: ThemeData(
