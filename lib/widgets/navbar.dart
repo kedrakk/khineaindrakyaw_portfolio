@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/const/nav_items.dart';
-
+import 'package:kedk_portfolio/providers/nav_provider.dart';
 import '../service/locator.dart';
 import '../service/orientation_service.dart';
 
@@ -9,8 +8,12 @@ class FixedNavBarWidget extends StatelessWidget {
   const FixedNavBarWidget({
     Key? key,
     required this.onMenuPressed,
+    required this.navItemTitle,
+    required this.onNavItemClicked,
   }) : super(key: key);
   final void Function()? onMenuPressed;
+  final Function(int index) onNavItemClicked;
+  final List<NavItems> navItemTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +36,14 @@ class FixedNavBarWidget extends StatelessWidget {
             : Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: navItems
+                children: navItemTitle
                     .map<Widget>(
                       (e) => TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          onNavItemClicked(navItemTitle.indexOf(e));
+                        },
                         child: Text(
-                          e['title'] ?? '',
+                          e.title,
                         ),
                       ),
                     )

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/const/nav_items.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/providers/nav_provider.dart';
 import 'package:kedk_portfolio/widgets/navbar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   HomePage({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final activeNavItem = ref.watch(navProvider);
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -17,22 +19,25 @@ class HomePage extends StatelessWidget {
           onMenuPressed: () {
             _scaffoldKey.currentState!.openDrawer();
           },
+          navItemTitle: NavItems.navitems,
+          onNavItemClicked: (currentIndex) =>
+              ref.read(navProvider.notifier).changePage(currentIndex),
         ),
       ),
       drawer: Drawer(
         child: ListView(
-          children: navItems
+          children: NavItems.navitems
               .map<Widget>(
                 (e) => ListTile(
                   title: Text(
-                    e['title'] ?? '',
+                    e.title,
                   ),
                 ),
               )
               .toList(),
         ),
       ),
-      body: const HomeWidget(),
+      body: activeNavItem.body,
     );
   }
 }
