@@ -34,7 +34,7 @@ class NavItems {
     ),
     NavItems(
       index: 2,
-      title: 'Skilss',
+      title: 'Skills',
       body: SkillsPage(),
     )
   ];

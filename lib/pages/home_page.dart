@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/providers/nav_provider.dart';
+import 'package:kedk_portfolio/widgets/dialogs.dart';
 import 'package:kedk_portfolio/widgets/navbar.dart';
 
 class HomePage extends ConsumerWidget {
@@ -32,6 +33,12 @@ class HomePage extends ConsumerWidget {
                   title: Text(
                     e.title,
                   ),
+                  onTap: () {
+                    ref
+                        .read(navProvider.notifier)
+                        .changePage(NavItems.navitems.indexOf(e));
+                    dismissDrawer(context);
+                  },
                 ),
               )
               .toList(),
