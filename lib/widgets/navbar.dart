@@ -10,10 +10,14 @@ class FixedNavBarWidget extends StatelessWidget {
     required this.onMenuPressed,
     required this.navItemTitle,
     required this.onNavItemClicked,
+    required this.onThemeIconPress,
+    required this.themeIcon,
   }) : super(key: key);
   final void Function()? onMenuPressed;
   final Function(int index) onNavItemClicked;
   final List<NavItems> navItemTitle;
+  final void Function()? onThemeIconPress;
+  final Widget themeIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,34 +25,46 @@ class FixedNavBarWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: double.infinity,
       margin: const EdgeInsets.all(5),
-      child: CupertinoNavigationBar(
+      child: AppBar(
         leading: CupertinoButton(
           child: const Icon(CupertinoIcons.bubble_left),
           onPressed: () {},
         ),
-        trailing: getIt<OrientationService>().isPortait(context)
-            ? IconButton(
-                onPressed: onMenuPressed,
-                icon: const Icon(
-                  Icons.menu,
+        actions: [
+          getIt<OrientationService>().isPortait(context)
+              ? IconButton(
+                  onPressed: onMenuPressed,
+                  icon: const Icon(
+                    Icons.menu,
+                  ),
+                )
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: navItemTitle
+                          .map<Widget>(
+                            (e) => TextButton(
+                              onPressed: () {
+                                onNavItemClicked(navItemTitle.indexOf(e));
+                              },
+                              child: Text(
+                                e.title,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    IconButton(
+                      onPressed: onThemeIconPress,
+                      icon: themeIcon,
+                    ),
+                  ],
                 ),
-              )
-            : Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: navItemTitle
-                    .map<Widget>(
-                      (e) => TextButton(
-                        onPressed: () {
-                          onNavItemClicked(navItemTitle.indexOf(e));
-                        },
-                        child: Text(
-                          e.title,
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
+        ],
       ),
     );
   }

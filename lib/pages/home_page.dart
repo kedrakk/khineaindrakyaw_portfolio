@@ -4,6 +4,8 @@ import 'package:kedk_portfolio/providers/nav_provider.dart';
 import 'package:kedk_portfolio/widgets/dialogs.dart';
 import 'package:kedk_portfolio/widgets/navbar.dart';
 
+import '../providers/app_theme_provider.dart';
+
 class HomePage extends ConsumerWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -12,6 +14,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final activeNavItem = ref.watch(navProvider);
+    final appThemeProvider = ref.read(themeProvider);
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -23,6 +26,10 @@ class HomePage extends ConsumerWidget {
           navItemTitle: NavItems.navitems,
           onNavItemClicked: (currentIndex) =>
               ref.read(navProvider.notifier).changePage(currentIndex),
+          themeIcon: appThemeProvider.themeIcon,
+          onThemeIconPress: () => ref
+              .read(themeProvider.notifier)
+              .changeTheme(appThemeProvider.themeKey),
         ),
       ),
       drawer: Drawer(
