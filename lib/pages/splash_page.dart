@@ -18,10 +18,12 @@ class SplashPage extends StatelessWidget {
       ),
     );
 
-    return Center(
-      child: Text(
-        'Splash Page',
-        style: Theme.of(context).textTheme.headline4,
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Splash Page',
+          style: Theme.of(context).textTheme.headline6,
+        ),
       ),
     );
   }

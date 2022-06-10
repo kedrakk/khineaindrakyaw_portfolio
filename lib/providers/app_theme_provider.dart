@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/const/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @immutable
 class MyAppTheme {
@@ -37,10 +38,31 @@ class MyAppTheme {
 }
 
 class ChangeThemeNotifier extends StateNotifier<MyAppTheme> {
-  ChangeThemeNotifier() : super(MyAppTheme.myAppThemes[0]);
+  ChangeThemeNotifier() : super(MyAppTheme.myAppThemes[0]) {
+    getThemeKey().then(
+      (value) => state = MyAppTheme.myAppThemes
+          .firstWhere((element) => element.themeKey == value),
+    );
+  }
 
   void changeTheme(String currentKey) {
-    state = MyAppTheme.myAppThemes.where((e) => e.themeKey != currentKey).first;
+    var newTheme =
+        MyAppTheme.myAppThemes.where((e) => e.themeKey != currentKey).first;
+    storeTheme(newTheme.themeKey);
+    state = newTheme;
+  }
+
+  //store key in sharedpreferences
+  void storeTheme(String themeKey) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString('themeKey', themeKey);
+    });
+  }
+
+  //get theme key from sharedpreferences
+  Future<String> getThemeKey() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('themeKey') ?? 'light';
   }
 }
 

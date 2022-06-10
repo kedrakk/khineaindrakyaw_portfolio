@@ -64,7 +64,7 @@ class HomeWidget extends StatelessWidget {
     return Center(
       child: Text(
         'Home Page',
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headline6,
       ),
     );
   }

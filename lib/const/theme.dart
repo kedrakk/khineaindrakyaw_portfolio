@@ -19,6 +19,9 @@ class AppThemeData {
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black),
     ),
+    primaryTextTheme: const TextTheme(
+      bodyText1: TextStyle(color: Colors.black),
+    ),
     textTheme: const TextTheme(
       headline6: TextStyle(
         color: Colors.black,
@@ -37,6 +40,9 @@ class AppThemeData {
     appBarTheme: const AppBarTheme(
       color: Colors.black,
       elevation: 0,
+    ),
+    primaryTextTheme: const TextTheme(
+      bodyText1: TextStyle(color: Colors.white),
     ),
     textTheme: const TextTheme(
       headline6: TextStyle(

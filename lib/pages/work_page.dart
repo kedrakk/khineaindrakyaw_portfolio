@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class WorkPage extends StatelessWidget {
   const WorkPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Work Page"),
+    return Center(
+      child: Text(
+        "Work Page",
+        style: Theme.of(context).textTheme.headline6,
+      ),
     );
   }
 }
