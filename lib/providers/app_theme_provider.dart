@@ -27,12 +27,12 @@ class MyAppTheme {
     MyAppTheme(
       themeKey: 'light',
       theme: AppThemeData.ligthTheme,
-      themeIcon: const Icon(Icons.brightness_3),
+      themeIcon: const Icon(Icons.wb_sunny),
     ),
     MyAppTheme(
       themeKey: 'dark',
       theme: AppThemeData.darkTheme,
-      themeIcon: const Icon(Icons.wb_sunny),
+      themeIcon: const Icon(Icons.brightness_3),
     ),
   ];
 }

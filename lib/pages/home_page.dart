@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/providers/nav_provider.dart';
-import 'package:kedk_portfolio/widgets/dialogs.dart';
 import 'package:kedk_portfolio/widgets/navbar.dart';
+import 'package:kedk_portfolio/const/string_extensions.dart';
 
 import '../providers/app_theme_provider.dart';
 
@@ -33,23 +33,26 @@ class HomePage extends ConsumerWidget {
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          children: NavItems.navitems
-              .map<Widget>(
-                (e) => ListTile(
-                  title: Text(
-                    e.title,
-                  ),
-                  onTap: () {
-                    ref
-                        .read(navProvider.notifier)
-                        .changePage(NavItems.navitems.indexOf(e));
-                    dismissDrawer(context);
-                  },
-                ),
-              )
-              .toList(),
-        ),
+        child: ListView(children: [
+          for (final item in NavItems.navitems)
+            ListTile(
+              leading: item.icon,
+              title: Text(item.title),
+              onTap: () {
+                ref.read(navProvider.notifier).changePage(
+                      NavItems.navitems.indexOf(item),
+                    );
+                _scaffoldKey.currentState!.closeDrawer();
+              },
+            ),
+          ListTile(
+            leading: appThemeProvider.themeIcon,
+            title: Text(appThemeProvider.themeKey.toCapitalizedString()),
+            onTap: () => ref
+                .read(themeProvider.notifier)
+                .changeTheme(appThemeProvider.themeKey),
+          ),
+        ]),
       ),
       body: activeNavItem.body,
     );
