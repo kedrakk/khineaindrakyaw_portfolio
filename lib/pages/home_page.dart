@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/providers/nav_provider.dart';
 import 'package:kedk_portfolio/widgets/navbar.dart';
-import 'package:kedk_portfolio/const/string_extensions.dart';
 
 import '../providers/app_theme_provider.dart';
 
@@ -45,13 +44,6 @@ class HomePage extends ConsumerWidget {
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
-          ListTile(
-            leading: appThemeProvider.themeIcon,
-            title: Text(appThemeProvider.themeKey.toCapitalizedString()),
-            onTap: () => ref
-                .read(themeProvider.notifier)
-                .changeTheme(appThemeProvider.themeKey),
-          ),
         ]),
       ),
       body: activeNavItem.body,

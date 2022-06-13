@@ -32,15 +32,21 @@ class FixedNavBarWidget extends StatelessWidget {
         ),
         actions: [
           getIt<OrientationService>().isPortait(context)
-              ? IconButton(
-                  onPressed: onMenuPressed,
-                  icon: const Icon(
-                    Icons.menu,
-                  ),
+              ? Row(
+                  children: [
+                    IconButton(
+                      onPressed: onMenuPressed,
+                      icon: const Icon(
+                        Icons.menu,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: onThemeIconPress,
+                      icon: themeIcon,
+                    ),
+                  ],
                 )
               : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
