@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeData {
   static const Color black = Color(0xff000000);
@@ -50,6 +51,14 @@ class AppThemeData {
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
+    ),
+  );
+
+  static TextStyle headline6Theme = GoogleFonts.bizUDGothic(
+    textStyle: const TextStyle(
+      color: primary,
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
     ),
   );
 }

@@ -23,6 +23,7 @@ class HomePage extends ConsumerWidget {
             _scaffoldKey.currentState!.openDrawer();
           },
           navItemTitle: NavItems.navitems,
+          onLogoPressed: () => ref.read(navProvider.notifier).changePage(0),
           onNavItemClicked: (currentIndex) =>
               ref.read(navProvider.notifier).changePage(currentIndex),
           themeIcon: appThemeProvider.themeIcon,

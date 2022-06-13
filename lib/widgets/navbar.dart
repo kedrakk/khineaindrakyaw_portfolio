@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kedk_portfolio/const/theme.dart';
 import 'package:kedk_portfolio/providers/nav_provider.dart';
 import '../service/locator.dart';
 import '../service/orientation_service.dart';
@@ -12,8 +12,10 @@ class FixedNavBarWidget extends StatelessWidget {
     required this.onNavItemClicked,
     required this.onThemeIconPress,
     required this.themeIcon,
+    required this.onLogoPressed,
   }) : super(key: key);
   final void Function()? onMenuPressed;
+  final void Function()? onLogoPressed;
   final Function(int index) onNavItemClicked;
   final List<NavItems> navItemTitle;
   final void Function()? onThemeIconPress;
@@ -26,9 +28,25 @@ class FixedNavBarWidget extends StatelessWidget {
       height: double.infinity,
       margin: const EdgeInsets.all(5),
       child: AppBar(
-        leading: CupertinoButton(
-          child: const Icon(CupertinoIcons.bubble_left),
-          onPressed: () {},
+        leading: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: TextButton(
+            onPressed: onLogoPressed,
+            child: Text(
+              "</>",
+              style: AppThemeData.headline6Theme,
+            ),
+          ),
+        ),
+        title: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: TextButton(
+            onPressed: onLogoPressed,
+            child: Text(
+              "{ KhinEaindra Kyaw }",
+              style: AppThemeData.headline6Theme,
+            ),
+          ),
         ),
         actions: [
           getIt<OrientationService>().isPortait(context)
