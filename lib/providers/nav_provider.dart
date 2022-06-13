@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/pages/contact_page.dart';
 import 'package:kedk_portfolio/pages/home_page.dart';
 import 'package:kedk_portfolio/pages/skills_page.dart';
 import 'package:kedk_portfolio/pages/work_page.dart';
@@ -44,7 +45,13 @@ class NavItems {
       title: 'Skills',
       body: SkillsPage(),
       icon: Icon(Icons.school),
-    )
+    ),
+    NavItems(
+      index: 3,
+      title: 'Contact',
+      body: ContactPage(),
+      icon: Icon(Icons.contacts),
+    ),
   ];
 }
 
