@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/navigation/app_routes.dart';
 import 'package:kedk_portfolio/pages/splash_page.dart';
 
 import '../providers/app_theme_provider.dart';
@@ -15,6 +16,8 @@ class MyApp extends ConsumerWidget {
       theme: appThemeProvider.theme,
       home: const SplashPage(),
       debugShowCheckedModeBanner: false,
+      initialRoute: RouterHelper.splash,
+      onGenerateRoute: RouterHelper.generateRoute,
     );
   }
 }

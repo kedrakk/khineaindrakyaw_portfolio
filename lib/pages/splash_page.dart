@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/pages/home_page.dart';
+import 'package:kedk_portfolio/navigation/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -17,12 +17,10 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     _timer = Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacement(
+      () => Navigator.pushNamedAndRemoveUntil(
         context,
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ),
-        result: 4,
+        RouterHelper.home,
+        (route) => false,
       ),
     );
     super.initState();
