@@ -6,14 +6,18 @@ import 'package:kedk_portfolio/widgets/navbar.dart';
 import '../providers/app_theme_provider.dart';
 
 class HomePage extends ConsumerWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({
+    Key? key,
+    this.currentIndex = 0,
+  }) : super(key: key);
+  final int currentIndex;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final activeNavItem = ref.watch(navProvider);
     final appThemeProvider = ref.read(themeProvider);
+    final navBody = ref.watch(navProvider);
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -22,10 +26,10 @@ class HomePage extends ConsumerWidget {
           onMenuPressed: () {
             _scaffoldKey.currentState!.openDrawer();
           },
-          navItemTitle: NavItems.navitems,
+          navItemTitle: navitems,
           onLogoPressed: () => ref.read(navProvider.notifier).changePage(0),
-          onNavItemClicked: (currentIndex) =>
-              ref.read(navProvider.notifier).changePage(currentIndex),
+          onNavItemClicked: (newIndex) =>
+              ref.read(navProvider.notifier).changePage(newIndex),
           themeIcon: appThemeProvider.themeIcon,
           onThemeIconPress: () => ref
               .read(themeProvider.notifier)
@@ -34,20 +38,20 @@ class HomePage extends ConsumerWidget {
       ),
       drawer: Drawer(
         child: ListView(children: [
-          for (final item in NavItems.navitems)
+          for (final item in navitems)
             ListTile(
               leading: item.icon,
               title: Text(item.title),
               onTap: () {
                 ref.read(navProvider.notifier).changePage(
-                      NavItems.navitems.indexOf(item),
+                      navitems.indexOf(item),
                     );
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
         ]),
       ),
-      body: activeNavItem.body,
+      body: navBody.body,
     );
   }
 }

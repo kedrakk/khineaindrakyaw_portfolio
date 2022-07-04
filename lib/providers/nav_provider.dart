@@ -26,40 +26,40 @@ class NavItems {
       icon: icon ?? this.icon,
     );
   }
-
-  static const List<NavItems> navitems = [
-    NavItems(
-      index: 0,
-      title: 'Home',
-      body: HomeWidget(),
-      icon: Icon(Icons.home),
-    ),
-    NavItems(
-      index: 1,
-      title: 'Work',
-      body: WorkPage(),
-      icon: Icon(Icons.work),
-    ),
-    NavItems(
-      index: 2,
-      title: 'Skills',
-      body: SkillsPage(),
-      icon: Icon(Icons.school),
-    ),
-    NavItems(
-      index: 3,
-      title: 'Contact',
-      body: ContactPage(),
-      icon: Icon(Icons.contacts),
-    ),
-  ];
 }
 
+const List<NavItems> navitems = [
+  NavItems(
+    index: 0,
+    title: 'Home',
+    body: HomeWidget(),
+    icon: Icon(Icons.home),
+  ),
+  NavItems(
+    index: 1,
+    title: 'Work',
+    body: WorkPage(),
+    icon: Icon(Icons.work),
+  ),
+  NavItems(
+    index: 2,
+    title: 'Skills',
+    body: SkillsPage(),
+    icon: Icon(Icons.school),
+  ),
+  NavItems(
+    index: 3,
+    title: 'Contact',
+    body: ContactPage(),
+    icon: Icon(Icons.contacts),
+  ),
+];
+
 class ChangeNavNotifier extends StateNotifier<NavItems> {
-  ChangeNavNotifier() : super(NavItems.navitems[0]);
+  ChangeNavNotifier() : super(navitems[0]);
 
   void changePage(int index) {
-    state = NavItems.navitems[index];
+    state = navitems[index];
   }
 }
 

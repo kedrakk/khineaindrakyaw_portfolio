@@ -7,6 +7,9 @@ class RouterHelper {
   static const String home = '/home';
   static const String splash = '/splash';
   static const String defaultRoute = '/';
+  static const String work = '/work';
+  static const String skills = '/skills';
+  static const String contact = '/contact';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -23,6 +26,27 @@ class RouterHelper {
       case home:
         return MaterialPageRoute(
           builder: (_) => HomePage(),
+          settings: settings,
+        );
+      case work:
+        return MaterialPageRoute(
+          builder: (_) => HomePage(
+            currentIndex: 1,
+          ),
+          settings: settings,
+        );
+      case skills:
+        return MaterialPageRoute(
+          builder: (_) => HomePage(
+            currentIndex: 2,
+          ),
+          settings: settings,
+        );
+      case contact:
+        return MaterialPageRoute(
+          builder: (_) => HomePage(
+            currentIndex: 3,
+          ),
           settings: settings,
         );
 
