@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/providers/text_field_provider.dart';
 import 'package:kedk_portfolio/widgets/text_fields.dart';
 
 import '../const/theme.dart';
@@ -10,15 +12,11 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return SizedBox(
-    //   width: MediaQuery.of(context).size.width * 1 / 2,
-    //   child: ContactFormWidget(),
-    // );
     return getIt<OrientationService>().isPortait(context)
         ? Column(
-            children: [
-              const ContactInfoWidget(),
-              const SizedBox(height: 20),
+            children: const [
+              ContactInfoWidget(),
+              SizedBox(height: 20),
               ContactFormWidget(),
             ],
           )
@@ -33,7 +31,7 @@ class ContactPage extends StatelessWidget {
                   margin: EdgeInsets.only(
                     right: MediaQuery.of(context).size.width * 1 / 10,
                   ),
-                  child: ContactFormWidget(),
+                  child: const ContactFormWidget(),
                 ),
               ),
             ],
@@ -66,68 +64,69 @@ class ContactInfoWidget extends StatelessWidget {
 }
 
 class ContactFormWidget extends StatelessWidget {
-  ContactFormWidget({Key? key}) : super(key: key);
-
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _messageController = TextEditingController();
+  const ContactFormWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Contact Me',
-            style: Theme.of(context).textTheme.headline6,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
+    return Consumer(
+      builder: ((context, ref, child) {
+        final textFieldsProvider = ref.watch(textFieldNotifier);
+        return Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormFieldWidget(
-                labelText: 'Name',
-                controller: _nameController,
+              Text(
+                'Contact Me',
+                style: Theme.of(context).textTheme.headline6,
               ),
               const SizedBox(
                 height: 10,
               ),
-              TextFormFieldWidget(
-                labelText: 'Email',
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormFieldWidget(
-                labelText: 'Your Message',
-                controller: _messageController,
-                minLines: 3,
-                maxLines: 5,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(
-                    Size(
-                      double.infinity,
-                      MediaQuery.of(context).size.height * 1 / 13,
-                    ),
+              Column(
+                children: [
+                  TextFormFieldWidget(
+                    labelText: 'Your Name',
+                    controller: textFieldsProvider.nameController,
                   ),
-                ),
-                onPressed: () {},
-                child: const Text('Submit'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextFormFieldWidget(
+                    labelText: 'Your Message Title',
+                    controller: textFieldsProvider.titleController,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextFormFieldWidget(
+                    labelText: 'Your Message Body',
+                    controller: textFieldsProvider.messageController,
+                    minLines: 3,
+                    maxLines: 5,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(
+                        Size(
+                          double.infinity,
+                          MediaQuery.of(context).size.height * 1 / 13,
+                        ),
+                      ),
+                    ),
+                    onPressed: () =>
+                        ref.read(textFieldNotifier.notifier).sendMail(),
+                    child: const Text('Submit'),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
+        );
+      }),
     );
   }
 }
