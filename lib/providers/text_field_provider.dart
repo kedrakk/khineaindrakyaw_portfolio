@@ -26,7 +26,9 @@ class TextFieldNotifier extends ChangeNotifier {
       subject: "${_titleController.text} from ${_nameController.text}",
       body: _messageController.text,
     );
-    await launchUrl(Uri.parse(mailtoLink.toString()));
+    await launchUrl(
+      Uri.parse(mailtoLink.toString()),
+    );
     clear();
   }
 }

@@ -30,6 +30,10 @@ class AppThemeData {
         fontWeight: FontWeight.w500,
       ),
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      labelStyle: TextStyle(color: Colors.grey),
+      hintStyle: TextStyle(color: Colors.grey),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -51,6 +55,10 @@ class AppThemeData {
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      labelStyle: TextStyle(color: Colors.white),
+      hintStyle: TextStyle(color: Colors.white),
     ),
   );
 

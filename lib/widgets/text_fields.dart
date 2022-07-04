@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/const/string_constants.dart';
+import 'package:kedk_portfolio/providers/app_theme_provider.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget({
@@ -19,22 +22,29 @@ class TextFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
-      maxLines: maxLines,
-      minLines: minLines,
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: const TextStyle(color: Colors.grey),
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-        ),
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-      ),
+    return Consumer(
+      builder: ((context, ref, child) {
+        final appThemeProvider = ref.read(themeProvider);
+        return TextFormField(
+          controller: controller,
+          textInputAction: textInputAction,
+          keyboardType: keyboardType,
+          maxLines: maxLines,
+          minLines: minLines,
+          style: appThemeProvider.themeKey == lightTheme
+              ? const TextStyle(color: Colors.black)
+              : const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            labelText: labelText,
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.green),
+            ),
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
