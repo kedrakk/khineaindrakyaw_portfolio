@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/providers/nav_provider.dart';
-import 'package:kedk_portfolio/widgets/navbar.dart';
 
+import '../data/data.dart';
 import '../providers/app_theme_provider.dart';
+import '../widgets/widgets.dart';
 
 class HomePage extends ConsumerWidget {
   HomePage({

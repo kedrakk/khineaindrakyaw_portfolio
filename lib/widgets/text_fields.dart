@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kedk_portfolio/const/string_constants.dart';
 import 'package:kedk_portfolio/providers/app_theme_provider.dart';
+import '../const/const.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget({

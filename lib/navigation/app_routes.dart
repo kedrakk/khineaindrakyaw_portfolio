@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kedk_portfolio/pages/home_page.dart';
 import 'package:kedk_portfolio/pages/splash_page.dart';
-import 'package:kedk_portfolio/widgets/route_not_found.dart';
+import '../widgets/widgets.dart';
 
 class RouterHelper {
   static const String home = '/home';

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/providers/text_field_provider.dart';
-import 'package:kedk_portfolio/widgets/text_fields.dart';
-
-import '../const/theme.dart';
+import '../widgets/widgets.dart';
+import '../const/const.dart';
 import '../service/locator.dart';
 import '../service/orientation_service.dart';
 
@@ -121,6 +120,25 @@ class ContactFormWidget extends StatelessWidget {
                         ref.read(textFieldNotifier.notifier).sendMail(),
                     child: const Text('Submit'),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: const [
+                      SocialIconsWidget(
+                        icon: Icon(Icons.facebook_rounded),
+                        link: "www.facebook.com",
+                      ),
+                      SocialIconsWidget(
+                        icon: Icon(Icons.facebook),
+                        link: "www.facebook.com",
+                      ),
+                      SocialIconsWidget(
+                        icon: Icon(Icons.facebook),
+                        link: "www.facebook.com",
+                      ),
+                    ],
+                  )
                 ],
               ),
             ],

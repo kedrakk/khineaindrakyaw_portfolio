@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kedk_portfolio/const/string_constants.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../const/const.dart';
 
 class TextFieldNotifier extends ChangeNotifier {
   final TextEditingController _nameController = TextEditingController();

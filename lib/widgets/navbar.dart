@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kedk_portfolio/const/theme.dart';
-import 'package:kedk_portfolio/providers/nav_provider.dart';
+import '../data/data.dart';
 import '../service/locator.dart';
 import '../service/orientation_service.dart';
+import '../const/const.dart';
 
 class FixedNavBarWidget extends StatelessWidget {
   const FixedNavBarWidget({
