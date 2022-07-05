@@ -23,36 +23,44 @@ List<SocialData> socialData = [
   SocialData(
     lightIcon: Image.asset(
       Assets.twitterIcon,
+      filterQuality: FilterQuality.high,
     ),
     darkIcon: Image.asset(
       Assets.twitterIcon,
+      filterQuality: FilterQuality.high,
     ),
     link: "https://www.twitter.com/",
   ),
   SocialData(
     lightIcon: Image.asset(
       Assets.devIcon,
+      filterQuality: FilterQuality.high,
     ),
     darkIcon: Image.asset(
       Assets.devIconWhite,
+      filterQuality: FilterQuality.high,
     ),
     link: "https://www.twitter.com/",
   ),
   SocialData(
     lightIcon: Image.asset(
       Assets.githubIcon,
+      filterQuality: FilterQuality.high,
     ),
     darkIcon: Image.asset(
       Assets.githubIconWhite,
+      filterQuality: FilterQuality.high,
     ),
     link: "https://www.twitter.com/",
   ),
   SocialData(
     lightIcon: Image.asset(
       Assets.linkedinIcon,
+      filterQuality: FilterQuality.high,
     ),
     darkIcon: Image.asset(
       Assets.linkedinIcon,
+      filterQuality: FilterQuality.high,
     ),
     link: "https://www.twitter.com/",
   ),

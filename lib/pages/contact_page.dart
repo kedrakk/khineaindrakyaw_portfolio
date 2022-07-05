@@ -14,7 +14,7 @@ class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return getIt<OrientationService>().isPortait(context)
-        ? Column(
+        ? ListView(
             children: const [
               ContactInfoWidget(),
               SizedBox(height: 20),
@@ -55,9 +55,22 @@ class ContactInfoWidget extends StatelessWidget {
             style: AppThemeData.headline6Theme,
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
-          const Text("I am a mobile developer based in Myanmar."),
+          Text(
+            "I am a mobile developer based in Myanmar.",
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            child: Image.asset(
+              Assets.contactImage,
+              fit: BoxFit.fitWidth,
+              filterQuality: FilterQuality.high,
+            ),
+          )
         ],
       ),
     );
