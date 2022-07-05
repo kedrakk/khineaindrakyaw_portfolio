@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kedk_portfolio/data/data.dart';
+import 'package:kedk_portfolio/providers/app_theme_provider.dart';
 import 'package:kedk_portfolio/providers/text_field_provider.dart';
 import '../widgets/widgets.dart';
 import '../const/const.dart';
@@ -123,28 +125,34 @@ class ContactFormWidget extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: const [
-                      SocialIconsWidget(
-                        icon: Icon(Icons.facebook_rounded),
-                        link: "www.facebook.com",
-                      ),
-                      SocialIconsWidget(
-                        icon: Icon(Icons.facebook),
-                        link: "www.facebook.com",
-                      ),
-                      SocialIconsWidget(
-                        icon: Icon(Icons.facebook),
-                        link: "www.facebook.com",
-                      ),
-                    ],
-                  )
+                  const SocialIconsSection(),
                 ],
               ),
             ],
           ),
         );
       }),
+    );
+  }
+}
+
+class SocialIconsSection extends ConsumerWidget {
+  const SocialIconsSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentAppTheme = ref.watch(themeProvider);
+    return Row(
+      children: socialData
+          .map(
+            (e) => SocialIconsWidget(
+              icon: currentAppTheme.themeKey == lightTheme
+                  ? e.lightIcon
+                  : e.darkIcon,
+              link: e.link,
+            ),
+          )
+          .toList(),
     );
   }
 }

@@ -1,30 +1,59 @@
 import 'package:flutter/material.dart';
+import '../const/const.dart';
 
 class SocialData {
-  Widget icon;
+  Widget lightIcon;
+  Widget darkIcon;
   String link;
-  SocialData({required this.icon, required this.link});
+  SocialData(
+      {required this.lightIcon, required this.darkIcon, required this.link});
 }
 
 List<SocialData> socialData = [
   SocialData(
-    icon: const Icon(Icons.email),
+    lightIcon: const Icon(Icons.email),
+    darkIcon: const Icon(Icons.email),
     link: "mailto:",
   ),
-  // SocialData(
-  //   icon: const Icon(Icons.facebook),
-  //   link: "https://www.facebook.com/",
-  // ),
-  // SocialData(
-  //   icon: const Icon(Icons.twitt),
-  //   link: "https://www.twitter.com/",
-  // ),
-  // SocialData(
-  //   icon: Icon(Icons.instagram),
-  //   link: "https://www.instagram.com/",
-  // ),
-  // SocialData(
-  //   icon: Icon(Icons.youtube),
-  //   link: "https://www.youtube.com/",
-  // ),
+  SocialData(
+    lightIcon: const Icon(Icons.facebook),
+    darkIcon: const Icon(Icons.facebook),
+    link: "https://www.facebook.com/",
+  ),
+  SocialData(
+    lightIcon: Image.asset(
+      Assets.twitterIcon,
+    ),
+    darkIcon: Image.asset(
+      Assets.twitterIcon,
+    ),
+    link: "https://www.twitter.com/",
+  ),
+  SocialData(
+    lightIcon: Image.asset(
+      Assets.devIcon,
+    ),
+    darkIcon: Image.asset(
+      Assets.devIconWhite,
+    ),
+    link: "https://www.twitter.com/",
+  ),
+  SocialData(
+    lightIcon: Image.asset(
+      Assets.githubIcon,
+    ),
+    darkIcon: Image.asset(
+      Assets.githubIconWhite,
+    ),
+    link: "https://www.twitter.com/",
+  ),
+  SocialData(
+    lightIcon: Image.asset(
+      Assets.linkedinIcon,
+    ),
+    darkIcon: Image.asset(
+      Assets.linkedinIcon,
+    ),
+    link: "https://www.twitter.com/",
+  ),
 ];
