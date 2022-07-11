@@ -9,4 +9,7 @@ class Assets {
   static const String profileImage = "assets/images/profile_icon.png";
   static const String contactImage = "assets/images/contact_us.png";
   static const String dartImage = "assets/images/dart.png";
+  static const String phpImage = "assets/images/php.png";
+  static const String csharpImage = "assets/images/csharp.png";
+  static const String kotlinImage = "assets/images/kotlin.png";
 }

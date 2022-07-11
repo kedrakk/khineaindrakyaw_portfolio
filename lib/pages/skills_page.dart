@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/const/const.dart';
+import 'package:kedk_portfolio/data/skill_data.dart';
 import 'package:kedk_portfolio/widgets/skill_block.dart';
 
 import '../providers/app_theme_provider.dart';
@@ -36,22 +37,24 @@ class SkillsPage extends ConsumerWidget {
         ),
         Wrap(
           alignment: WrapAlignment.center,
-          children: [
-            SkillBlockWidget(
-              assetName: Assets.dartImage,
-              title: Text(
-                "DART",
-                style: appThemeProvider.themeKey == lightTheme
-                    ? const TextStyle(
-                        color: Colors.black,
-                      )
-                    : const TextStyle(color: Colors.white),
-              ),
-              bgColor: appThemeProvider.themeKey == lightTheme
-                  ? Colors.black.withOpacity(.15)
-                  : Colors.white.withOpacity(.15),
-            ),
-          ],
+          children: programmingLanguages
+              .map(
+                (e) => SkillBlockWidget(
+                  assetName: e.asset,
+                  title: Text(
+                    e.title,
+                    style: appThemeProvider.themeKey == lightTheme
+                        ? const TextStyle(
+                            color: Colors.black,
+                          )
+                        : const TextStyle(color: Colors.white),
+                  ),
+                  bgColor: appThemeProvider.themeKey == lightTheme
+                      ? Colors.black.withOpacity(.15)
+                      : Colors.white.withOpacity(.15),
+                ),
+              )
+              .toList(),
         ),
       ],
     );

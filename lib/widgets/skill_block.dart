@@ -13,22 +13,25 @@ class SkillBlockWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      child: Container(
-        padding: const EdgeInsets.all(10.0),
-        color: bgColor,
-        child: Column(
-          children: [
-            Image.asset(
-              assetName,
-              fit: BoxFit.fitWidth,
-              filterQuality: FilterQuality.high,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            title,
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: ClipRRect(
+        child: Container(
+          padding: const EdgeInsets.all(10.0),
+          color: bgColor,
+          child: Column(
+            children: [
+              Image.asset(
+                assetName,
+                fit: BoxFit.fitWidth,
+                filterQuality: FilterQuality.high,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              title,
+            ],
+          ),
         ),
       ),
     );
