@@ -25,3 +25,33 @@ final List<SkillData> programmingLanguages = [
     title: "KOTLIN (Beginner)",
   ),
 ];
+
+final List<SkillData> webDevelopment = [
+  SkillData(
+    asset: Assets.htmlIMage,
+    title: "HTML",
+  ),
+  SkillData(
+    asset: Assets.cssImage,
+    title: "CSS",
+  ),
+  SkillData(
+    asset: Assets.javascriptImage,
+    title: "JAVASCRIPT",
+  ),
+  SkillData(
+    asset: Assets.jqueryImage,
+    title: "JQUERY",
+  ),
+];
+
+final List<SkillData> database = [
+  SkillData(
+    asset: Assets.mysqlImage,
+    title: "MySQL",
+  ),
+  SkillData(
+    asset: Assets.mssqlImage,
+    title: "MS-SQL",
+  ),
+];

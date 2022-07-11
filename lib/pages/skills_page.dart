@@ -51,6 +51,19 @@ class SkillsPage extends ConsumerWidget {
         const SizedBox(
           height: 15,
         ),
+        SkillItemsWrapWidget(
+          skillData: webDevelopment,
+          textStyle: textStyle,
+          color: color,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        SkillItemsWrapWidget(
+          skillData: database,
+          textStyle: textStyle,
+          color: color,
+        ),
       ],
     );
   }
@@ -71,7 +84,7 @@ class SkillItemsWrapWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       alignment: WrapAlignment.center,
-      children: programmingLanguages
+      children: skillData
           .map(
             (e) => SkillBlockWidget(
               assetName: e.asset,

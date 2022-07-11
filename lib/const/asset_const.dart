@@ -12,4 +12,10 @@ class Assets {
   static const String phpImage = "assets/images/php.png";
   static const String csharpImage = "assets/images/csharp.png";
   static const String kotlinImage = "assets/images/kotlin.png";
+  static const String htmlIMage = "assets/images/html.png";
+  static const String cssImage = "assets/images/css.png";
+  static const String javascriptImage = "assets/images/js.png";
+  static const String jqueryImage = "assets/images/jquery.png";
+  static const String mysqlImage = "assets/images/mysql.png";
+  static const String mssqlImage = "assets/images/mssql.png";
 }
