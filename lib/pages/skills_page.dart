@@ -12,6 +12,14 @@ class SkillsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appThemeProvider = ref.read(themeProvider);
+    final TextStyle textStyle = appThemeProvider.themeKey == lightTheme
+        ? const TextStyle(
+            color: Colors.black,
+          )
+        : const TextStyle(color: Colors.white);
+    final Color color = appThemeProvider.themeKey == lightTheme
+        ? Colors.black.withOpacity(.15)
+        : Colors.white.withOpacity(.15);
     return ListView(
       children: [
         const SizedBox(
@@ -35,28 +43,46 @@ class SkillsPage extends ConsumerWidget {
         const SizedBox(
           height: 15,
         ),
-        Wrap(
-          alignment: WrapAlignment.center,
-          children: programmingLanguages
-              .map(
-                (e) => SkillBlockWidget(
-                  assetName: e.asset,
-                  title: Text(
-                    e.title,
-                    style: appThemeProvider.themeKey == lightTheme
-                        ? const TextStyle(
-                            color: Colors.black,
-                          )
-                        : const TextStyle(color: Colors.white),
-                  ),
-                  bgColor: appThemeProvider.themeKey == lightTheme
-                      ? Colors.black.withOpacity(.15)
-                      : Colors.white.withOpacity(.15),
-                ),
-              )
-              .toList(),
+        SkillItemsWrapWidget(
+          skillData: programmingLanguages,
+          textStyle: textStyle,
+          color: color,
+        ),
+        const SizedBox(
+          height: 15,
         ),
       ],
+    );
+  }
+}
+
+class SkillItemsWrapWidget extends StatelessWidget {
+  const SkillItemsWrapWidget({
+    Key? key,
+    required this.skillData,
+    required this.textStyle,
+    required this.color,
+  }) : super(key: key);
+  final List<SkillData> skillData;
+  final TextStyle textStyle;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      children: programmingLanguages
+          .map(
+            (e) => SkillBlockWidget(
+              assetName: e.asset,
+              title: Text(
+                e.title,
+                style: textStyle,
+              ),
+              bgColor: color,
+            ),
+          )
+          .toList(),
     );
   }
 }
