@@ -5,6 +5,8 @@ import 'package:kedk_portfolio/data/skill_data.dart';
 import 'package:kedk_portfolio/widgets/skill_block.dart';
 
 import '../providers/app_theme_provider.dart';
+import '../service/locator.dart';
+import '../service/orientation_service.dart';
 
 class SkillsPage extends ConsumerWidget {
   const SkillsPage({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class SkillsPage extends ConsumerWidget {
     final Color color = appThemeProvider.themeKey == lightTheme
         ? Colors.black.withOpacity(.15)
         : Colors.white.withOpacity(.15);
+    final double fontSize =
+        getIt<OrientationService>().isPortait(context) ? 15 : 12;
     return ListView(
       children: [
         const SizedBox(
@@ -33,19 +37,24 @@ class SkillsPage extends ConsumerWidget {
         const SizedBox(
           height: 20,
         ),
-        Text(
-          "Currently working as a Flutter Mobile Developer, and also participating in web development and UX design.",
-          textAlign: TextAlign.center,
-          style: appThemeProvider.themeKey == lightTheme
-              ? const TextStyle(color: Colors.black)
-              : const TextStyle(color: Colors.white),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Currently working as a Flutter Mobile Developer, and also participating in web development and UX design.",
+            textAlign: TextAlign.center,
+            style: appThemeProvider.themeKey == lightTheme
+                ? const TextStyle(color: Colors.black)
+                : const TextStyle(color: Colors.white),
+          ),
         ),
         const SizedBox(
           height: 15,
         ),
         SkillItemsWrapWidget(
           skillData: programmingLanguages,
-          textStyle: textStyle,
+          textStyle: textStyle.copyWith(
+            fontSize: fontSize,
+          ),
           color: color,
         ),
         const SizedBox(
@@ -53,7 +62,9 @@ class SkillsPage extends ConsumerWidget {
         ),
         SkillItemsWrapWidget(
           skillData: frameWorks,
-          textStyle: textStyle,
+          textStyle: textStyle.copyWith(
+            fontSize: fontSize,
+          ),
           color: color,
         ),
         const SizedBox(
@@ -61,7 +72,9 @@ class SkillsPage extends ConsumerWidget {
         ),
         SkillItemsWrapWidget(
           skillData: webDevelopment,
-          textStyle: textStyle,
+          textStyle: textStyle.copyWith(
+            fontSize: fontSize,
+          ),
           color: color,
         ),
         const SizedBox(
@@ -69,7 +82,9 @@ class SkillsPage extends ConsumerWidget {
         ),
         SkillItemsWrapWidget(
           skillData: database,
-          textStyle: textStyle,
+          textStyle: textStyle.copyWith(
+            fontSize: fontSize,
+          ),
           color: color,
         ),
       ],
