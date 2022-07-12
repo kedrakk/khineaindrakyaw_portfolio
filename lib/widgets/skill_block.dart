@@ -17,7 +17,7 @@ class SkillBlockWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height =
-        getIt<OrientationService>().isPortait(context) ? 50 : 100;
+        getIt<OrientationService>().isPortait(context) ? 50 : 90;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ClipRRect(

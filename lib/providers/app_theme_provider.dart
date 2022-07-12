@@ -55,14 +55,14 @@ class ChangeThemeNotifier extends StateNotifier<MyAppTheme> {
   //store key in sharedpreferences
   void storeTheme(String themeKey) {
     SharedPreferences.getInstance().then((prefs) {
-      prefs.setString('themeKey', themeKey);
+      prefs.setString(themeKeyConst, themeKey);
     });
   }
 
   //get theme key from sharedpreferences
   Future<String> getThemeKey() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('themeKey') ?? 'light';
+    return prefs.getString(themeKeyConst) ?? darkTheme;
   }
 }
 

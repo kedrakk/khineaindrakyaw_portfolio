@@ -13,6 +13,56 @@ class SkillsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    return getIt<OrientationService>().isPortait(context)
+        ? ListView(
+            children: const [
+              SKillInfoWidget(),
+              SizedBox(height: 20),
+              SkillSectionWidget(),
+            ],
+          )
+        : Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 2 / 5,
+                child: const SKillInfoWidget(),
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.width * 1 / 10,
+                  ),
+                  child: const SkillSectionWidget(),
+                ),
+              ),
+            ],
+          );
+  }
+}
+
+class SKillInfoWidget extends StatelessWidget {
+  const SKillInfoWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: SizedBox(
+        child: Image.asset(
+          Assets.profileImage,
+          fit: BoxFit.fitWidth,
+          filterQuality: FilterQuality.high,
+        ),
+      ),
+    );
+  }
+}
+
+class SkillSectionWidget extends ConsumerWidget {
+  const SkillSectionWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final appThemeProvider = ref.read(themeProvider);
     final TextStyle textStyle = appThemeProvider.themeKey == lightTheme
         ? const TextStyle(
@@ -25,6 +75,8 @@ class SkillsPage extends ConsumerWidget {
     final double fontSize =
         getIt<OrientationService>().isPortait(context) ? 15 : 12;
     return ListView(
+      shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
       children: [
         const SizedBox(
           height: 30,

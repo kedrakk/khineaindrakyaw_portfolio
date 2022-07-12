@@ -6,7 +6,7 @@ class Assets {
   static const String devIconWhite = "assets/icons/dev_icon_white.png";
   static const String githubIconWhite = "assets/icons/github_icon_white.png";
 
-  static const String profileImage = "assets/images/profile_icon.png";
+  static const String profileImage = "assets/images/profile_image.png";
   static const String contactImage = "assets/images/contact_us.png";
   static const String dartImage = "assets/images/dart.png";
   static const String phpImage = "assets/images/php.png";
