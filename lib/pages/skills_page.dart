@@ -52,6 +52,14 @@ class SkillsPage extends ConsumerWidget {
           height: 15,
         ),
         SkillItemsWrapWidget(
+          skillData: frameWorks,
+          textStyle: textStyle,
+          color: color,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        SkillItemsWrapWidget(
           skillData: webDevelopment,
           textStyle: textStyle,
           color: color,

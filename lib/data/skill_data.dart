@@ -55,3 +55,22 @@ final List<SkillData> database = [
     title: "MS-SQL",
   ),
 ];
+
+final List<SkillData> frameWorks = [
+  SkillData(
+    asset: Assets.flutterImage,
+    title: "FLUTTER",
+  ),
+  SkillData(
+    asset: Assets.laravelImage,
+    title: "LARAVEL",
+  ),
+  SkillData(
+    asset: Assets.bootstrapImage,
+    title: "BOOTSTRAP",
+  ),
+  SkillData(
+    asset: Assets.figmaImage,
+    title: "FIGMA",
+  ),
+];

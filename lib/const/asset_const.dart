@@ -18,4 +18,8 @@ class Assets {
   static const String jqueryImage = "assets/images/jquery.png";
   static const String mysqlImage = "assets/images/mysql.png";
   static const String mssqlImage = "assets/images/mssql.png";
+  static const String flutterImage = "assets/images/flutter.png";
+  static const String laravelImage = "assets/images/laravel.png";
+  static const String bootstrapImage = "assets/images/bootstrap.png";
+  static const String figmaImage = "assets/images/figma.png";
 }
