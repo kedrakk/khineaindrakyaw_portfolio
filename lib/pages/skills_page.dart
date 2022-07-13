@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kedk_portfolio/const/const.dart';
-import 'package:kedk_portfolio/data/skill_data.dart';
 import 'package:kedk_portfolio/widgets/skill_block.dart';
-
+import 'package:kedk_portfolio/data/data.dart';
 import '../providers/app_theme_provider.dart';
 import '../service/locator.dart';
 import '../service/orientation_service.dart';
