@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^3.0.1
   mailto: ^2.0.0
   url_launcher: ^6.1.4
+  hovering: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/skill/
+    - assets/images/work/
     - assets/icons/
   #   - images/a_dot_ham.jpeg
 
